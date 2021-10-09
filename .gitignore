@@ -1,0 +1,6 @@
+# idea workspaces and settings
+.idea
+# build
+build
+# gradle cache
+/.gradle

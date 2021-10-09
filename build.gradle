@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+ext {
+    ver = '1.0.0'
+    s = 'SNAPSHOT'
+    a = 'ALPHA'
+    b = 'BETA'
+    r = 'RELEASE'
+}
+
+group 'vcg'
+version "${ver}-${s}"
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '16'
+targetCompatibility = '16'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainModule = 'vcg.backuphelper'
+    mainClass = 'vcg.backuphelper.HelloApplication'
+}
+
+javafx {
+    version = '16'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation "com.google.code.gson:gson:2.8.8"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.1"
+}
+
+test {
+    useJUnitPlatform()
+}
